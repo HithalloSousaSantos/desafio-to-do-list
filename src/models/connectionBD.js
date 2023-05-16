@@ -1,7 +1,7 @@
 //Esse meu arquivo está sendo responsável para criar a conexão com o BD e carregar o modelo.
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/ProjetoToDoList', {
+const sequelize = new Sequelize('postgres://Nomedousuário:Senha@Host:Porta/Nomedobancodedados', {
     logging: false
 });
 
