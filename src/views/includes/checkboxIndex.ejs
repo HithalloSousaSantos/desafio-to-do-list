@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="responsive-table">
+        <table class="table my-3">
+            <thead class="thead-light">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Atividade</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% atividades.forEach(atividade => { %>
+                    <tr>
+                        <td><li></li></td>
+                        <td></td>
+                        <td><%= atividade.id %></td>
+                        <td><%= atividade.descricao %></td>
+                        <% if (atividade.concluido === true) { %>
+                            <td class='text-success'>Concluido</h1></td>
+                        <% } else { %>
+                            <td class='text-warning'>Em andamento</td>
+                        <% } %>
+                        <!-- <td><%= atividade.concluido %></td> -->
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
