@@ -1,6 +1,5 @@
-const models = require('../models/connectionBD');
-const atividade = require('../models/AtividadesConfigs');
-const { async } = require('regenerator-runtime');
+const models = require('../../frameworks/sequelize/models/connectionBD');
+const atividade = require('../../core/AtividadesConfigs');
 
 // Controller da criação de atividades
 exports.register = (req, res) => {

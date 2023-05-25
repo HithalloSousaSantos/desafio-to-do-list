@@ -1,4 +1,4 @@
-const models = require('./connectionBD');
+const models = require('../frameworks/sequelize/models/connectionBD');
 
 async function listarAtividades() {
     const atividades = models.tabelaAtividade.findAll()

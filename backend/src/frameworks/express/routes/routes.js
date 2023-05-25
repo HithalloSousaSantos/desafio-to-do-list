@@ -1,12 +1,12 @@
 const express = require('express');
 const route = express.Router();
 
-const homeController = require('./src/controllers/homeController');
+const homeController = require('../../../controllers/homeController');
 
-const atividadeController = require('./src/controllers/atividadeController');
+const atividadeController = require('../../../controllers/atividadeController');
 
-const listarAtividadeConController = require('./src/controllers/listarAtividadeConController');
-const listarAtividadeAndController = require('./src/controllers/listarAtividadeAndController')
+const listarAtividadeConController = require('../../../controllers/listarAtividadeConController');
+const listarAtividadeAndController = require('../../../controllers/listarAtividadeAndController')
 
 //Rotas da home
 route.get('/', homeController.index);
