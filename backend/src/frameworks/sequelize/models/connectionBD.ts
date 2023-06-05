@@ -1,19 +1,18 @@
-//Esse meu arquivo está sendo responsável para criar a conexão com o BD e carregar o modelo.
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/ProjetoToDoList', {
     logging: false
 });
 
-const models = {};
+const models: { [key: string]: any} = {};
 
 models.tabelaAtividade = require('./AtividadesModel')(sequelize);
 
 sequelize.sync().then(() => {
-    console.log('Tabela criada')
-}).catch((erro) => {
-    console.error(erro)
-})
+    console.log('Tabela foi criada com sucesso!!');
+}).catch((erro: Error) => {
+    console.error(erro);
+});
 
 Object.keys(models).forEach((nomeModelo) => {
     if('associate' in models[nomeModelo]) {
@@ -24,4 +23,4 @@ Object.keys(models).forEach((nomeModelo) => {
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
 
-module.exports = models;
+export default models;
