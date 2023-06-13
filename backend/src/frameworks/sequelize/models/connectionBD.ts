@@ -1,23 +1,24 @@
 import { Sequelize } from 'sequelize';
+import defineAtividade from './AtividadesModel';
 
 const sequelize = new Sequelize('postgres://postgres:postgres@localhost:5432/ProjetoToDoList', {
-    logging: false
+  logging: false
 });
 
-const models: { [key: string]: any} = {};
+const models: { [key: string]: any } = {};
 
-models.tabelaAtividade = require('./AtividadesModel')(sequelize);
+models.Atividade = defineAtividade(sequelize);
 
 sequelize.sync().then(() => {
-    console.log('Tabela foi criada com sucesso!!');
-}).catch((erro: Error) => {
-    console.error(erro);
+  console.log('Tabela criada');
+}).catch((erro) => {
+  console.error(erro);
 });
 
-Object.keys(models).forEach((nomeModelo) => {
-    if('associate' in models[nomeModelo]) {
-        models[nomeModelo].associate(models);
-    };
+Object.keys(models).forEach((modelName) => {
+  if ('associate' in models[modelName]) {
+    models[modelName].associate(models);
+  }
 });
 
 models.sequelize = sequelize;

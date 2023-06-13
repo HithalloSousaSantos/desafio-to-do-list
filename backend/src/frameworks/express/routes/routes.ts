@@ -1,12 +1,12 @@
 import express from 'express';
 import * as homeController from '../../../application/controllers/homeController';
-import * as atividadeController  from '../../../application/controllers/atividadeController';
-import * as atividadesConcluidas  from '../../../application/controllers/listarAtvConcluida';
-import * as atividadesAndamento  from '../../../application/controllers/listarAtvAndamento';
+import * as atividadeController from '../../../application/controllers/atividadeController';
+import * as atividadesConcluidas from '../../../application/controllers/listarAtvConcluida';
+import * as atividadesAndamento from '../../../application/controllers/listarAtvAndamento';
 
 const route = express.Router();
 
-route.get('/', homeController.index);
+route.get('/test', homeController.index);
 
 route.get('/atividade-concluida', atividadesConcluidas.indexConcluidas);
 

@@ -1,33 +1,32 @@
-import tabelaAtividade from '../frameworks/sequelize/models/connectionBD';
+import models from '../frameworks/sequelize/models/connectionBD';
 
-async function listarAtividades(){
-    const atividades = await tabelaAtividade.findAll();
-    return atividades;
-};
+async function listarAtividades() {
+  const atividades = await models.Atividade.findAll();
+  return atividades;
+}
 
 async function listarAtividadesConcluidas() {
-    const atividades = await tabelaAtividade.findAll({
-        where: {
-            concluido: true
-        },
-        order: [['dataCon', 'DESC']]
-    });
-    return atividades;
-};
+  const atividades = await models.Atividade.findAll({
+    where: {
+      concluido: true,
+    },
+    order: [['dataCon', 'DESC']],
+  });
+  return atividades;
+}
 
 async function listarAtividadesAndamento() {
-    const atividades = await tabelaAtividade.findAll({
-        where: {
-            concluido: false
-        },
-        order: [['dataInc', 'DESC']]
-    });
-    
-    return atividades;
-};
+  const atividades = await models.Atividade.findAll({
+    where: {
+      concluido: false,
+    },
+    order: [['dataInc', 'DESC']],
+  });
+  return atividades;
+}
 
 export {
-    listarAtividades,
-    listarAtividadesAndamento,
-    listarAtividadesConcluidas
+  listarAtividades,
+  listarAtividadesConcluidas,
+  listarAtividadesAndamento,
 };

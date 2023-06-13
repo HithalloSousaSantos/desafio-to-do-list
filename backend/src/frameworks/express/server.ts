@@ -9,10 +9,16 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-app.set('views', path.resolve(__dirname, 'src', 'views'));
-app.set('view engine', 'ejs');
+
+// app.use(express.static(path.resolve(__dirname, 'frontend')));
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, 'frontend', 'index.html'));
+// });
 
 app.locals.editSuccess = false;
+
+app.use(express.json())
 
 app.use(routes);
 

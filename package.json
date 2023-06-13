@@ -2,10 +2,10 @@
   "name": "to-do-list",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/src/frameworks/sequelize/models/server.js",
+  "main": "backend/src/frameworks/express/server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js --ignore public --ignore frontend",
+    "start": "nodemon server.ts --ignore public --ignore frontend",
     "dev": "webpack -w"
   },
   "keywords": [],
@@ -23,7 +23,8 @@
     "regenerator-runtime": "^0.13.3",
     "req-flash": "^0.0.3",
     "sequelize": "^6.31.1",
-    "style-loader": "^1.0.0"
+    "style-loader": "^1.0.0",
+    "ts-node": "^10.9.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.5",

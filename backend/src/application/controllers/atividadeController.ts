@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import  tabelaAtividade  from '../../frameworks/sequelize/models/connectionBD';
+import models from '../../frameworks/sequelize/models/connectionBD';
 import { listarAtividadesAndamento } from "../../core/AtividadesConfigs";
 
 
 export const cadastroAtividade = (req: Request, res: Response): void => {
     res.render('atividade');
-};
+};  
 
 export const cadastroAtividadeFeito = async (req: Request, res: Response): Promise<void> => {
     try {
         const { descricao } = req.body;
-        await tabelaAtividade.create({
+        await models.Atividade.create({
             descricao
         });
         res.redirect('/');
@@ -22,7 +22,7 @@ export const cadastroAtividadeFeito = async (req: Request, res: Response): Promi
 
 export const edicaoGet = async (req: Request, res: Response): Promise<void> => {
     const id = req.params.id;
-    const atividade = await tabelaAtividade.findByPk(id);
+    const atividade = await models.findByPk(id);
     
     if (!atividade) {
         return res.render('404');
@@ -38,7 +38,7 @@ export const edicaoPost =async (req: Request, res: Response): Promise<void> => {
     
     try {
         const { descricao } = req.body;
-        await tabelaAtividade.update(
+        await models.update(
             { descricao, concluido: false, dataCon: null},
             { where: { id } }
         );
@@ -60,7 +60,7 @@ export const concluidaPost =async (req: Request, res: Response): Promise<void> =
     const id = req.params.id;
 
     try {
-        await tabelaAtividade.update(
+        await models.update(
             { concluido: true, dataCon: new Date() },
             { where: { id } }
         );
@@ -72,11 +72,11 @@ export const concluidaPost =async (req: Request, res: Response): Promise<void> =
     };
 };
 
-export const deletarAtividade =async (req: Request, res: Response): Promise<void> => {
+export const deletarAtividade = async (req: Request, res: Response): Promise<void> => {
     const id = req.params.id;
 
     try {
-        await tabelaAtividade.destroy(
+        await models.destroy(
             { where: { id }}
         );
         console.log('Atividade foi excluída com exito!!');
