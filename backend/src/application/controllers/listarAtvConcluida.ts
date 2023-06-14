@@ -12,7 +12,7 @@ import { listarAtividadesConcluidas } from '../../core/AtividadesConfigs';
 export const indexConcluidas = async (request: Request, response: Response): Promise<void> => {
     try {
         const atividades = await listarAtividadesConcluidas();
-        response.render('atividadesConcluidas', { atividades });
+        response.json(atividades)
     } catch (erro) {
         console.error('Erro ao listar as atividades concluidas: ', erro);
         response.status(500).send('Erro ao listar atividades concluídas');

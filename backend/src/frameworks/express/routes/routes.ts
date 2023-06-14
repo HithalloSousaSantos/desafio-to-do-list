@@ -6,21 +6,21 @@ import * as atividadesAndamento from '../../../application/controllers/listarAtv
 
 const route = express.Router();
 
-route.get('/test', homeController.index);
+route.get('/', homeController.index);//Front feito
 
-route.get('/atividade-concluida', atividadesConcluidas.indexConcluidas);
+route.get('/atividade/concluida', atividadesConcluidas.indexConcluidas);//front feito
 
-route.get('/atividade-em-andamento', atividadesAndamento.indexAndamento);
+route.get('/atividade/andamento', atividadesAndamento.indexAndamento);//Front feito
 
-route.get('/atividade/register', atividadeController.cadastroAtividade);
-route.post('/atividade/register', atividadeController.cadastroAtividadeFeito);
+// route.get('/atividade/cadastro', atividadeController.cadastroAtividade);
+route.post('/atividade/cadastro', atividadeController.cadastroAtividadeFeito); //Front feito
 
-route.get('/atividade-editar/:id', atividadeController.edicaoGet);
-route.post('/atividade-editar/:id', atividadeController.edicaoPost);
+route.get('/atividade/editar/:id', atividadeController.edicaoGet); //front feito
+route.put('/atividade/editar/:id', atividadeController.edicaoPost);//front feito
 
-route.get('/atividade-em-andamento/concluida/:id', atividadeController.concluidaGet);
-route.post('/atividade-em-andamento/concluida/:id', atividadeController.concluidaPost);
+// route.get('/atividade/andamento/concluido/:id', atividadeController.concluidaGet);
+route.post('/atividade/andamento/concluida/:id', atividadeController.concluidaPost); //front feito
 
-route.post('/atividade-delete/:id', atividadeController.deletarAtividade);
+route.delete('/atividade/delete/:id', atividadeController.deletarAtividade);
 
 export default route;
